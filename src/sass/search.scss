@@ -1,0 +1,15 @@
+#search{
+    .search_t{border-bottom:1px solid #999;
+        padding:0.266667rem;line-height:0.6933rem;display:flex;justify-content:space-between;
+        .search_t_l{
+            border:1px solid #ccc;width:8.0rem;font-size:0.32rem;color:#666;float:left;line-height:0.6933rem;
+            i{padding:0 0.266667rem;font-size:0.48rem;}
+            input{font-size:0.32rem;color:#999;}
+        }
+        a{float:right;font-size:0.426667rem;color:#333;}
+    }
+    .search_b{
+        padding:0.266667rem;
+        h2{font-size:0.373333rem;line-height:0.64rem;color:#ccc;}
+    }
+}
