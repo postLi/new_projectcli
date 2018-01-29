@@ -2,13 +2,13 @@
     <footer id="foot">
         <div>
             <a href="#/home" :class="homePage">
-                <i class="el-icon-circle-plus"></i>
+                <i class="el-icon-shangpin-shouye"></i>
                 <span>首页</span>
             </a>
         </div>
         <div>
-            <a href="#/category" :class="categoryPage">
-                <i class="el-icon-circle-plus"></i>
+            <a href="#/girl" :class="categoryPage">
+                <i class="el-icon-shangpin-fenlei"></i>
                 <span>分类</span>
             </a>
         </div>
@@ -18,14 +18,14 @@
             </a>
         </div>
         <div>
-            <a href="#/brand" :class="brandPage">
-                <i class="el-icon-circle-plus"></i>
+            <a href="#/wom" :class="brandPage">
+                <i class="el-icon-shangpin-pinpai"></i>
                 <span>品牌</span>
             </a>
         </div>
         <div>
             <a href="#/mine" :class="minePage">
-                <i class="el-icon-circle-plus"></i>
+                <i class="el-icon-shangpin-wode"></i>
                 <span>我的</span>
             </a>
         </div>

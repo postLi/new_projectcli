@@ -7,6 +7,7 @@
                 <li><a href="#">手机<i class="el-icon-arrow-right"></i></a></li>
                 <li><a href="#">邮箱<i class="el-icon-arrow-right"></i></a></li>
             </ul>
+            <button @touchstart="quitLogin">退出登录</button>
         </div>
     </div>
 </template>
@@ -16,6 +17,19 @@
     export default{
         components:{
             myHead
+        },
+        data(){
+            return{
+                Storage:window.sessionStorage
+            }
+        },
+        methods:{
+            quitLogin:function(){
+                this.Storage.setItem('name','');
+                this.Storage.setItem('id','');
+                this.Storage.setItem('proNum',0);
+                this.$router.replace({path:'/login'});
+            }
         }
     }
 </script>

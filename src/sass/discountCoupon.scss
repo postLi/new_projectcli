@@ -1,4 +1,3 @@
-html,body{height:100%;}
 #discountCoupon{display:flex;flex-direction:column;height:100%;
     .cont_c{color:#666;font-size:0.373333rem;line-height:0.96rem;flex:1;background:#f6f6f6;position:relative;
         .cont_c_t{
@@ -7,6 +6,6 @@ html,body{height:100%;}
                 &.active{color:#111;}
             }
         }
-        .cont_c_b{font-size:0.8rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-15deg);color:#ccc;font-weight:bold;}
+        .cont_c_b{font-size:0.8rem;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-15deg);color:#ccc;font-weight:bold;}
     }
 }

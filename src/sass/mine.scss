@@ -1,4 +1,4 @@
-html,body{height:100%;}
+#app{height:100%;}
 #mine{display:flex;flex-direction:column;height:100%;
     &>dl{
         flex:1;background:#F6F6F6;padding-top:0.24rem;overflow-y:scroll;font-size:0.373333rem;line-height:1.12rem;

@@ -3,20 +3,29 @@
         <myHead goToBack="1" headMes="登录"></myHead>
         <div class="login_c">
             <div class="uname">
-                <i class="el-icon-circle-plus"></i>
+                <i class="el-icon-shangpin-wode"></i>
                 <input type="text" name="username" placeholder="请输入手机号/邮箱" v-model="uname" />
             </div>
             <div class="psw">
-                <i class="el-icon-circle-plus"></i>
-                <input type="password" name="password" placeholder="请输入登录密码" v-model="upsw" />
+                <i class="el-icon-shangpin-mima"></i>
+                <input :type="password" name="password" placeholder="请输入登录密码" v-model="upsw" />
+                <i :class="canSee" @touchstart.stop="changeShow"></i>
             </div>
-            <button @touchstart="goLogin" v-if="uname&&upsw">登录</button>
+            <button @touchend="goLogin" v-if="uname&&upsw">登录</button>
             <button disabled :class="grey" v-else>登录</button>
-            <p class="hint">{{hintMsg}}</p>
+            <p class="animated fadeIn" v-show="show">{{hintMsg}}</p>
             <div class="change">
                 <a href="#/reg">注册账号</a>
                 <a href="#/message">短信登录</a>
                 <a href="#/findpassword">忘记密码？</a>
+            </div>
+        </div>
+        <div v-show="myShow==true">
+            <div class="dk-spinner-mask"></div>
+            <div class="dk-spinner dk-spinner-three-bounce">
+                <div class="dk-bounce1"></div>
+                <div class="dk-bounce2"></div>
+                <div class="dk-bounce3"></div>
             </div>
         </div>
     </div>
@@ -35,7 +44,11 @@
                 upsw:'',
                 grey:'grey',
                 hintMsg:'',
-                hasError:false
+                password:'password',
+                show:false,
+                myShow:false,
+                Storage:window.sessionStorage,
+                canSee:'el-icon-shangpin-buxianshimima'
             }
         },
         mounted(){
@@ -47,26 +60,35 @@
                 this.upsw = this.upsw.trim();
                 var reg1 = /^1[34578]\d{9}$/;
                 var reg2 = /^[a-z][\da-z\-]{5,17}@[\da-z\-]{2,}(\.[a-z]{2,}){1,2}$/i;
-                if(!reg1.test(this.uname) && !reg2.test(this.upsw)){
+                if(!reg1.test(this.uname) && !reg2.test(this.uname)){
                     this.hintMsg = '请输入正确的手机号或邮箱';
-                    var hint = document.querySelector('.hint');
-                    hint.style.display = 'block';
-                    setTimeout(function(){
-                        hint.style.display = 'none';
-                    },1500);
+                    this.show = true;
                 }else{
-                    http.post({url:'http://10.3.136.7:88/login',params:{username:this.uname,password:this.upsw}}).then(response => {
-                        if(response.data == 'no'){
+                    this.myShow = true;
+                    http.post({url:'login',params:{username:this.uname,password:this.upsw}}).then(response => {
+                        this.myShow = false;
+                        if(response.data == 'no'){console.log(response);
                             this.hintMsg = '您输入的用户名或密码有误';
-                            var hint = document.querySelector('.hint');
-                            hint.style.display = 'block';
-                            setTimeout(function(){
-                                hint.style.display = 'none';
-                            },1500);
-                        }else if(response.data == 'yes'){
-                            console.log(response);
+                            this.show = true;
+                        }else{
+                            this.hintMsg = '';
+                            this.Storage.setItem('id',response.data);
+                            this.Storage.setItem('name',this.uname);
+                            this.$router.replace({path:'/mine'});
                         }
                     });
+                }
+            },
+            changeShow:function(){
+                if(this.password=='password'){
+                    this.password = 'text';
+                }else{
+                    this.password = 'password';
+                }
+                if(this.canSee=='el-icon-shangpin-buxianshimima'){
+                    this.canSee = 'el-icon-view'
+                }else{
+                    this.canSee = 'el-icon-shangpin-buxianshimima'
                 }
             }
         }

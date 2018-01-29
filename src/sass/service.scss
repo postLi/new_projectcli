@@ -1,8 +1,7 @@
-html,body{height:100%;}
 #service{
     height:100%;display:flex;flex-direction:column;height:100%;
     .service_c{
-        background:#f6f6f6;font-size:0.32rem;flex:1;overflow-y:scroll;
+        background:#f6f6f6;font-size:0.32rem;flex:1;overflow-y:scroll;margin-top:1.173333rem;
         .service_c_t{
             display:flex;
             dl{
@@ -21,10 +20,9 @@ html,body{height:100%;}
             }
         }
         .service_c_b{
-            line-height:1.066667rem;
-            li{
+            li{margin-top:0.213333rem;
                 a{
-                    display:block;padding:0 0.266667rem;font-size:0.373333rem;border-bottom:1px solid #ccc;background:white;color:#444;
+                    display:block;padding:0 0.266667rem;font-size:0.373333rem;border-bottom:1px solid #ccc;background:white;color:#444;line-height:1.12rem;
                     i{float:right;line-height:1.066667rem;}
                 }
             }

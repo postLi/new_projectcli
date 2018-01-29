@@ -4,10 +4,21 @@ import ElementUI from 'element-ui';
 import '../../node_modules/element-ui/lib/theme-chalk/index.css'
 Vue.use(VueRouter);
 Vue.use(ElementUI);
-
+Vue.use(VueScroller);
+Vue.use(VueLazyLoad,{
+    error:'../../img/error.png',
+    loading:require('../img/loading.gif'),
+    preLoad: 1,
+    attempt: 1
+})
 // 引入路由文件;
+import VueScroller from 'vue-scroller'
+import VueLazyLoad from 'vue-lazyload'
 
 import home from '../components/home/home.vue';
+import recommend from '../components/recommend/recommend.vue';
+
+
 // import head from '../components/head/head.vue';
 import mine from '../components/mine/mine.vue';
 import reg from '../components/reg/reg.vue';
@@ -33,18 +44,50 @@ import afterSale from '../components/explainInfo/afterSale.vue';
 import honest from '../components/explainInfo/honest.vue';
 import onlinePay from '../components/paymentMethods/onlinePay.vue';
 import discountCouponPay from '../components/paymentMethods/discountCouponPay.vue';
+import scrollHide from '../components/scrollHide/scrollHide.vue';
+
+
+import details from '../components/details/details.vue';
+import goods from '../components/goods/good.vue';
+import car from '../components/cart/car.vue';
+import brand from '../components/brand/brand.vue';
+import wom from '../components/brand/wom.vue';
+import man from '../components/brand/man.vue';
+import children from '../components/brand/children.vue';
+import categorys from '../components/categroys/categroy.vue';
+import girl from '../components/categroys/girl.vue';
+import nan from '../components/categroys/nan.vue';
+import child from '../components/categroys/child.vue';
+import order from '../components/orders/order.vue';
+import pay from '../components/pay/pay.vue';
 
 var router = new VueRouter({
     routes:[
-        {
+         {
             path:'/',
             name:'home',
             component:home
         },
         {
+            path:'/home',
+            name:'home',
+            component:home
+        },
+
+        {
+            path:'/recommend',
+            name:'recommend',
+            component:recommend
+        },
+        {
             path:'/search',
             name:'search',
             component:search
+        },
+        {
+            path:'/pay',
+            name:'pay',
+            component:pay
         },
         {
             path:'/mine',
@@ -156,6 +199,80 @@ var router = new VueRouter({
             path:'/discountCouponPay',
             name:'discountCouponPay',
             component:discountCouponPay
+        },
+        {
+            path:'/scrollHide',
+            name:'scrollHide',
+            component:scrollHide
+        },
+        {
+            path:'/',
+            name:'home',
+            component:home
+        },
+        {
+            path:'/goods',
+            name:'goods',
+            component:goods
+        },
+        {
+            path:'/details',
+            name:'details',
+            component:details
+        },
+        {
+            path:'/car',
+            name:'car',
+            component:car
+        },
+        {
+            path:'/brand',
+            name:'brand',
+            component:brand,
+            children:[
+                {
+                    path:'/wom',
+                    name:'wom',
+                    component:wom
+                },
+                {
+                    path:'/man',
+                    name:'man',
+                    component:man
+                },
+                {
+                    path:'/children',
+                    name:'children',
+                    component:children
+                }
+            ]
+        },
+        {
+            path:'/categorys',
+            name:'categorys',
+            component:categorys,
+            children:[
+                {
+                    path:'/girl',
+                    name:'girl',
+                    component:girl
+                },
+                {
+                    path:'/nan',
+                    name:'nan',
+                    component:nan
+                },
+                {
+                    path:'/child',
+                    name:'child',
+                    component:child
+                }
+            ]
+        },
+        {
+            path:'/order',
+            name:'order',
+            component:order
         }
     ]
 })
